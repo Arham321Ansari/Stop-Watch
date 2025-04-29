@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body onload="reRender()">
+    <main>
+        <div class="display"><p class="display-min-sec"><span class="min" id="min">00</span>:<span id="sec" class="sec">00</span></p> </div>
+        <div class="btns">
+            <button class="start" id="start" onclick="start()">Start</button>
+            <button class="lap" onclick="lap()">Lap</button>
+            <button class="reset" onclick="reset()">Reset</button>
+        </div>
+        <div class="lapTime">
+            <div class="content1">Lap Times</div><hr>
+            <ul id="list">
+
+            </ul>
+            <div class="check"></div>
+        </div>
+        
+    </main>
+    <script>
+        var count = 0;
+        var min = 0;
+        var timer;
+        function interval(){
+                timer = setInterval(function run(){
+                localStorage.setItem("sec",count);
+                localStorage.setItem("min",min);
+                document.getElementById("sec").innerHTML = `${count}`;
+                count++;
+                console.log(count);
+                if(count>60){
+                    count = 0;
+                    min++;
+                    document.getElementById("min").innerHTML = `${min}`;
+                }
+            },[100]);
+            
+        }
+        function reRender(){
+            count = localStorage.getItem("sec");
+            min = localStorage.getItem("min");
+            document.getElementById("min").innerHTML = `${min}`;
+            document.getElementById("sec").innerHTML = `${count}`;
+
+        }
+        function start(){
+            
+            if(document.getElementById("start").innerHTML === "Start"){
+                document.getElementById("start").innerHTML = "Stop";
+                document.getElementById("start").style.background = 'red';
+                document.getElementById("start").setAttribute("onclick","stop()");
+                interval();
+                
+            }
+        }
+        var lapCount = 1;
+        function lap(){
+            var list = document.getElementById("list");
+            var ele = document.createElement("li");
+            ele.innerHTML = `<span class="lapcount">Lap${lapCount} </span>   -   <span class="clock">${localStorage.getItem("min")}:${localStorage.getItem("sec")}</span> `;
+            list.prepend(ele);
+            lapCount++;
+        }
+        function stop(){
+            clearInterval(timer);
+            document.getElementById("start").innerHTML = "Start";
+            document.getElementById("start").style.background = 'green';
+            document.getElementById("start").setAttribute("onclick","start()")
+        }
+        function reset(){
+            clearInterval(timer);
+            count = 0;
+            min = 0;
+            document.getElementById("sec").innerHTML = `${count}`;
+            document.getElementById("min").innerHTML = `${min}`;
+            localStorage.setItem("sec",0);
+            localStorage.setItem("min",0);
+            
+        }
+        window.onload(()=>{
+            count = localStorage.getItem("sec");
+            min = localStorage.getItem("min");
+            document.getElementById("min").innerHTML = `${min}`;
+            document.getElementById("sec").innerHTML = `${count}`;
+        })
+        
+    </script>
+</body>
+
+</html>

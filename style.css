@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.display{
+    height: 100px;
+    width: 500px;
+    /* border: 2px solid; */
+    border-radius: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    box-shadow: 0px 0px 1px;
+    background-color: azure;
+}
+.display p{
+    word-spacing: 4px;
+    color: #343434;
+    font-family: sans-serif;
+}
+.btns{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+}
+.start{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: x-large;
+    width: 100px;
+    background-color: green;
+    color: #ffff;
+    border: none;
+}
+.lap{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: x-large;
+    width: 100px;
+    background-color: rgb(52, 184, 237);
+    color: #ffff;
+    border: none; 
+}
+.reset{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: x-large;
+    width: 100px;
+    background-color: grey;
+    color: #ffff;
+    border: none;
+}
+.start:hover{
+    filter: brightness(1.2);
+}
+.lap:hover{
+    filter: brightness(1.2);
+}
+.reset:hover{
+    filter: brightness(1.2);
+}
+
+.content1{
+    font-size: 25px;
+    text-align: center;
+    padding: 10px 0px;
+}
+.lapTime{
+    background-color: azure;
+    border-radius: 36px;
+}
+ul{
+    align-items: center;
+}
+li{
+    font-family: sans-serif;
+    list-style-type: none;
+    padding: 10px;
+    font-size: 22px;
+    word-spacing: 50px;
+    padding-left: 30%;
+}
+.lapcount{
+    font-weight: 700;
+}
+.clock{
+    font-weight: 400;
+    letter-spacing: 2px;
+}
